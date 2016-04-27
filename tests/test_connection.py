@@ -42,7 +42,8 @@ class TestConnection(unittest.TestCase):
                          'https://test.com/api')
 
     def test_headers(self):
-        headers = NSOConnection._get_headers(None, MediaType.API)
+        connection = NSOConnection('test','test','test')
+        headers = connection._get_headers(MediaType.API)
         self.assertEqual(len(headers), 1)
         self.assertTrue(headers['Content-Type'].startswith(MediaType.API))
         self.assertTrue(headers['Content-Type'].endswith(NSOConnection.response_type))
