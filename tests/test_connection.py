@@ -19,9 +19,27 @@ from pynso.connection import (_format_url, NSOConnection)
 
 
 class TestConnection(unittest.TestCase):
+    test_host = 'test.com'
+
     def test_url_format(self):
-        self.assertEqual(_format_url(ResourceType.API, 'foo/bar'),
-                         'api/foo/bar')
+        self.assertEqual(_format_url(host=self.test_host,
+                                     resource_type=ResourceType.OPERATION,
+                                     path='foo/bar'),
+                         'https://test.com/api/operation/foo/bar')
+
+    def test_url_format_http(self):
+        self.assertEqual(_format_url(host=self.test_host,
+                                     resource_type=ResourceType.OPERATION,
+                                     path='foo/bar',
+                                     ssl=False),
+                         'http://test.com/api/operation/foo/bar')
+
+    def test_url_format_base(self):
+        self.assertEqual(_format_url(host=self.test_host,
+                                     resource_type=None,
+                                     path=None,
+                                     ssl=True),
+                         'https://test.com/api')
 
     def test_headers(self):
         headers = NSOConnection._get_headers(None, MediaType.API)
