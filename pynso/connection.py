@@ -19,10 +19,12 @@ __all__ = ['NSOConnection']
 
 
 def _format_url(resource_type, path):
-    return '%s/%s' % (resource_type, path)
+    return 'api/%s/%s' % (resource_type, path)
 
 
 class NSOConnection(object):
+    response_type = 'json'
+
     def __init__(self, host, username, password):
         self.host = host
         self.username = username
@@ -36,5 +38,6 @@ class NSOConnection(object):
 
     def _get_headers(self, media_type):
         return {
-            'Accepts': media_type
+            'Content-Type': '%s+%s' % (media_type,
+                                       NSOConnection.response_type)
         }
