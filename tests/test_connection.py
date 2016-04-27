@@ -20,7 +20,7 @@ from pynso.connection import (_format_url, NSOConnection)
 
 class TestConnection(unittest.TestCase):
     def test_url_format(self):
-        self.assertEqual(_format_url(ResourceType.API,'foo/bar'),
+        self.assertEqual(_format_url(ResourceType.API, 'foo/bar'),
                          'api/foo/bar')
 
     def test_headers(self):

@@ -1,1 +1,2 @@
 pypi-publisher
+requests

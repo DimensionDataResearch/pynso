@@ -1,6 +1,8 @@
 PyNSO
 ===============================
 
+![Build](https://travis-ci.org/DimensionDataCBUSydney/pynso.svg?branch=master)
+
 version number: 1.0
 author: Anthony Shaw
 
@@ -22,12 +24,3 @@ Or clone the repo:
     $ git clone https://github.com/DimensionDataCBUSydney/pynso.git
     $ python setup.py install
     
-Contributing
-------------
-
-TBD
-
-Example
--------
-
-TBD
