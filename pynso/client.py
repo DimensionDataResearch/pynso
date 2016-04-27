@@ -39,7 +39,7 @@ class NSOClient(object):
                                    media_type=MediaType.API,
                                    path=None)['api']
 
-    def get_datastore(self, datastore):
+    def get_datastore(self, datastore, params=None):
         """
         Get the details of a datastore
 
@@ -48,4 +48,21 @@ class NSOClient(object):
         """
         return self.connection.get(resource_type=datastore,
                                    media_type=MediaType.DATASTORE,
-                                   path=None)
+                                   path=None,
+                                   params=params)
+
+    def get_data(self, datastore, data_path, params=None):
+        """
+        Get a data entry in a datastore
+
+        :param datastore: The target datastore
+        :type  datastore: :class:`DatastoreType`
+
+        :param data_path: The list of paths
+        :type  data_path: ``list`` of ``str`` or ``tuple``
+        """
+        data_path = '/'.join(data_path)
+        return self.connection.get(resource_type=datastore,
+                                   media_type=MediaType.DATA,
+                                   path=data_path,
+                                   params=params)
