@@ -17,6 +17,7 @@ The main client class for the NSO APIs
 '''
 from .connection import NSOConnection
 from .resourcetypes import MediaType
+from .datastores import DatastoreType
 
 __all__ = ['NSOClient']
 
@@ -66,3 +67,19 @@ class NSOClient(object):
                                    media_type=MediaType.DATA,
                                    path=data_path,
                                    params=params)
+
+    def get_rollbacks(self):
+        """
+        Get a list of stored rollbacks
+        """
+        return self.connection.get(resource_type=DatastoreType.ROLLBACKS,
+                                   media_type=MediaType.API)
+
+    def get_rollback(self, name):
+        """
+        Get a list of stored rollbacks
+        """
+        return self.connection.get_plain(
+            resource_type=DatastoreType.ROLLBACKS,
+            media_type=MediaType.API,
+            path=name)

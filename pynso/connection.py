@@ -21,7 +21,7 @@ logger = logging.getLogger()
 __all__ = ['NSOConnection']
 
 
-def _format_url(host, resource_type, path, ssl=True):
+def _format_url(host, resource_type, path=None, ssl=True):
     protocol = 'https' if ssl else 'http'
     if resource_type is None:
         if path is None:
@@ -52,7 +52,7 @@ class NSOConnection(object):
         self.session.auth = (username, password)
         self.ssl = ssl
 
-    def get(self, resource_type, media_type, path, params=None):
+    def get(self, resource_type, media_type, path=None, params=None):
         url = _format_url(self.host, resource_type, path, self.ssl)
         response = self.session.get(
             url,
@@ -61,6 +61,19 @@ class NSOConnection(object):
         try:
             response.raise_for_status()
             return response.json()
+        except requests.HTTPError:
+            logger.error('Failed on request %s', url)
+            logger.error(_format_error_message(response))
+
+    def get_plain(self, resource_type, media_type, path=None, params=None):
+        url = _format_url(self.host, resource_type, path, self.ssl)
+        response = self.session.get(
+            url,
+            headers=self._get_headers(media_type),
+            params=params)
+        try:
+            response.raise_for_status()
+            return response.text()
         except requests.HTTPError:
             logger.error('Failed on request %s', url)
             logger.error(_format_error_message(response))
