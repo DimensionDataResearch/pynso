@@ -36,3 +36,14 @@ class NSOClient(object):
         return self.connection.get(resource_type=None,
                                    media_type=MediaType.API,
                                    path=None)['api']
+
+    def get_datastore(self, datastore):
+        """
+        Get the details of a datastore
+
+        :param datastore: The target datastore
+        :type  datastore: :class:`DatastoreType`
+        """
+        return self.connection.get(resource_type=datastore,
+                                   media_type=MediaType.API,
+                                   path=None)

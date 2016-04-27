@@ -25,6 +25,9 @@ __all__ = ['ResourceType',
 class ResourceType(object):
     '''
     An enum of the resource types in the API.
+
+    The RESTCONF protocol defines some application
+    specific media types to identify each of the available resource types
     '''
     API = 'api'
     DATASTORE = 'datastore'
