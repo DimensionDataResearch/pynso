@@ -2,7 +2,6 @@
 
 
 [![Build](https://travis-ci.org/DimensionDataCBUSydney/pynso.svg?branch=master)](https://travis-ci.org/DimensionDataCBUSydney/pynso)
-[![codecov](https://codecov.io/gh/DimensionDataCBUSydney/pynso/branch/master/graph/badge.svg)](https://codecov.io/gh/DimensionDataCBUSydney/pynso)
 [![PyPI](https://img.shields.io/pypi/v/pynso.svg?maxAge=2592000)]()
 [![PyPI](https://img.shields.io/pypi/l/pynso.svg?maxAge=2592000)]()
 [![PyPI](https://img.shields.io/pypi/pyversions/pynso.svg?maxAge=2592000)]()

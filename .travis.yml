@@ -15,6 +15,4 @@ install:
   - pip install coveralls
 # command to run tests
 script:  
-  - python setup.py nosetests --with-coverage --cover-package pypiview
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - python setup.py nosetests --with-coverage
