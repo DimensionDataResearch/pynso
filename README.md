@@ -2,6 +2,8 @@ PyNSO
 ===============================
 
 ![Build](https://travis-ci.org/DimensionDataCBUSydney/pynso.svg?branch=master)
+[![codecov](https://codecov.io/gh/DimensionDataCBUSydney/pynso/branch/master/graph/badge.svg)](https://codecov.io/gh/DimensionDataCBUSydney/pynso)
+
 
 version number: 1.0
 author: Anthony Shaw
