@@ -18,8 +18,13 @@ import requests
 __all__ = ['NSOConnection']
 
 
-def _format_url(resource_type, path):
-    return 'api/%s/%s' % (resource_type, path)
+def _format_url(host, resource_type, path, ssl=True):
+    protocol = 'https' if ssl else 'http'
+    if resource_type is None:
+        if path is None:
+            return '%s://%s/api' % (protocol, host)
+        return '%s://%s/api/%s' % (protocol, host, path)
+    return '%s://%s/api/%s/%s' % (protocol, host, resource_type, path)
 
 
 class NSOConnection(object):
@@ -27,14 +32,15 @@ class NSOConnection(object):
 
     def __init__(self, host, username, password):
         self.host = host
-        self.username = username
-        self.password = password
         self.session = requests.Session()
+        self.session.auth = (username, password)
 
     def get(self, resource_type, media_type, path):
-        url = _format_url(resource_type, path)
-        self.session.get(url,
-                         headers=self._get_headers(media_type))
+        url = _format_url(self.host, resource_type, path)
+        response = self.session.get(
+            url,
+            headers=self._get_headers(media_type))
+        return response.json()
 
     def _get_headers(self, media_type):
         return {

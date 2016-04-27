@@ -15,7 +15,8 @@
 '''
 The main client class for the NSO APIs
 '''
-from connection import NSOConnection
+from .connection import NSOConnection
+from .resourcetypes import MediaType
 
 __all__ = ['NSOClient']
 
@@ -24,8 +25,14 @@ class NSOClient(object):
     connectionCls = NSOConnection
 
     def __init__(self, host, username, password):
-        self.host = host
-        self.username = username
-        self.password = password
+        self.connection = self.connectionCls(host,
+                                             username,
+                                             password)
 
-        self.connection = NSOClient.connectionCls(host, username, password)
+    def info(self):
+        """
+        Returns API information
+        """
+        return self.connection.get(resource_type=None,
+                                   media_type=MediaType.API,
+                                   path=None)['api']
