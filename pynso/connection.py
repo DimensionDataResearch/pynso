@@ -24,19 +24,24 @@ def _format_url(host, resource_type, path, ssl=True):
         if path is None:
             return '%s://%s/api' % (protocol, host)
         return '%s://%s/api/%s' % (protocol, host, path)
-    return '%s://%s/api/%s/%s' % (protocol, host, resource_type, path)
+    else:
+        if path is None:
+            return '%s://%s/api/%s' % (protocol, host, resource_type)
+        else:
+            return '%s://%s/api/%s/%s' % (protocol, host, resource_type, path)
 
 
 class NSOConnection(object):
     response_type = 'json'
 
-    def __init__(self, host, username, password):
+    def __init__(self, host, username, password, ssl):
         self.host = host
         self.session = requests.Session()
         self.session.auth = (username, password)
+        self.ssl = ssl
 
     def get(self, resource_type, media_type, path):
-        url = _format_url(self.host, resource_type, path)
+        url = _format_url(self.host, resource_type, path, self.ssl)
         response = self.session.get(
             url,
             headers=self._get_headers(media_type))
@@ -45,5 +50,5 @@ class NSOConnection(object):
     def _get_headers(self, media_type):
         return {
             'Accept': '%s+%s' % (media_type,
-                                       NSOConnection.response_type)
+                                 NSOConnection.response_type)
         }

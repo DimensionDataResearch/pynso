@@ -24,10 +24,12 @@ __all__ = ['NSOClient']
 class NSOClient(object):
     connectionCls = NSOConnection
 
-    def __init__(self, host, username, password):
-        self.connection = self.connectionCls(host,
+    def __init__(self, host, username, password,
+                 port=8080, ssl=False):
+        self.connection = self.connectionCls('%s:%s' % (host, port),
                                              username,
-                                             password)
+                                             password,
+                                             ssl)
 
     def info(self):
         """
@@ -45,5 +47,5 @@ class NSOClient(object):
         :type  datastore: :class:`DatastoreType`
         """
         return self.connection.get(resource_type=datastore,
-                                   media_type=MediaType.API,
+                                   media_type=MediaType.DATASTORE,
                                    path=None)
