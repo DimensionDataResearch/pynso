@@ -1,0 +1,45 @@
+# Created by: system
+# Date: 2016-03-24 16:13:46
+# Via: system
+# Type: delta
+# Label: 
+# Comment: 
+# No: 10001
+
+snmp:snmp {
+    snmp:agent {
+        snmp:enabled false;
+        delete:
+        snmp:engine-id;
+        snmp:version {
+            delete:
+            snmp:v2c;
+            delete:
+            snmp:v1;
+            delete:
+            snmp:v3;
+        }
+    }
+    delete:
+    snmp:community public;
+    snmp:vacm {
+        delete:
+        snmp:group initial;
+        delete:
+        snmp:group public;
+        delete:
+        snmp:view internet;
+        delete:
+        snmp:view restricted;
+    }
+    delete:
+    snmp:notify foo;
+    snmp:usm {
+        snmp:local {
+            delete:
+            snmp:user initial;
+        }
+    }
+    delete:
+    snmp:target monitor;
+}

@@ -1,0 +1,10 @@
+{
+  "api": {
+    "version": "0.5",
+    "config": {},
+    "running": {},
+    "operational": {},
+    "operations": {},
+    "rollbacks": {}
+  }
+}

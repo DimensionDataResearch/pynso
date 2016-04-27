@@ -83,3 +83,13 @@ class NSOClient(object):
             resource_type=DatastoreType.ROLLBACKS,
             media_type=MediaType.API,
             path=name)
+
+    def apply_rollback(self, datastore, name):
+        """
+        Apply a system rollback
+        """
+        return self.connection.post(
+            resource_type=datastore,
+            media_type=MediaType.DATA,
+            path='rollback',
+            data={'file': name})

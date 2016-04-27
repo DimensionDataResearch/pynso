@@ -1,0 +1,272 @@
+{
+  "ietf-netconf-acm:nacm": {
+    "write-default": "permit",
+    "groups": {
+      "group": [
+        {
+          "name": "admin"
+        },
+        {
+          "name": "oper"
+        }
+      ]
+    },
+    "rule-list": [
+      {
+        "name": "admin"
+      },
+      {
+        "name": "any-group"
+      }
+    ]
+  },
+  "snmp:snmp": {
+    "agent": {
+      "enabled": true,
+      "ip": "0.0.0.0",
+      "udp-port": 4000,
+      "version": {
+        "v1": [
+          null
+        ],
+        "v2c": [
+          null
+        ],
+        "v3": [
+          null
+        ]
+      },
+      "engine-id": {},
+      "max-message-size": 50000
+    },
+    "system": {
+      "contact": "",
+      "name": "",
+      "location": ""
+    },
+    "usm": {
+      "local": {
+        "user": [
+          {
+            "name": "initial"
+          }
+        ]
+      }
+    },
+    "target": [
+      {
+        "name": "monitor"
+      }
+    ],
+    "community": [
+      {
+        "index": "public"
+      }
+    ],
+    "notify": [
+      {
+        "name": "foo"
+      }
+    ],
+    "vacm": {
+      "group": [
+        {
+          "name": "initial"
+        },
+        {
+          "name": "public"
+        }
+      ],
+      "view": [
+        {
+          "name": "internet"
+        },
+        {
+          "name": "restricted"
+        }
+      ]
+    }
+  },
+  "tailf-aaa:aaa": {
+    "authentication": {
+      "users": {
+        "user": [
+          {
+            "name": "admin"
+          },
+          {
+            "name": "oper"
+          },
+          {
+            "name": "private"
+          },
+          {
+            "name": "public"
+          }
+        ]
+      }
+    }
+  },
+  "tailf-ncs:cluster": {
+    "global-settings": {},
+    "authgroup": [
+      {
+        "name": "default"
+      }
+    ]
+  },
+  "tailf-ncs:devices": {
+    "global-settings": {
+      "trace-dir": "./logs"
+    },
+    "authgroups": {
+      "group": [
+        {
+          "name": "default"
+        },
+        {
+          "name": "didata"
+        }
+      ],
+      "snmp-group": [
+        {
+          "name": "default"
+        }
+      ]
+    },
+    "mib-group": [
+      {
+        "name": "snmp"
+      }
+    ],
+    "device": [
+      {
+        "name": "ios0"
+      },
+      {
+        "name": "sb1001a"
+      },
+      {
+        "name": "sb1001b"
+      }
+    ],
+    "operations": {
+      "connect": "/api/running/devices/_operations/connect",
+      "sync": "/api/running/devices/_operations/sync",
+      "sync-to": "/api/running/devices/_operations/sync-to",
+      "sync-from": "/api/running/devices/_operations/sync-from",
+      "disconnect": "/api/running/devices/_operations/disconnect",
+      "check-sync": "/api/running/devices/_operations/check-sync",
+      "check-yang-modules": "/api/running/devices/_operations/check-yang-modules",
+      "fetch-ssh-host-keys": "/api/running/devices/_operations/fetch-ssh-host-keys",
+      "clear-trace": "/api/running/devices/_operations/clear-trace"
+    }
+  },
+  "tailf-ncs:java-vm": {
+    "stdout-capture": {
+      "file": "./logs/ncs-java-vm.log"
+    },
+    "jmx": {},
+    "operations": {
+      "stop": "/api/running/java-vm/_operations/stop",
+      "start": "/api/running/java-vm/_operations/start",
+      "restart": "/api/running/java-vm/_operations/restart"
+    }
+  },
+  "tailf-ncs:python-vm": {
+    "logging": {
+      "log-file-prefix": "./logs/ncs-python-vm"
+    },
+    "operations": {
+      "stop": "/api/running/python-vm/_operations/stop",
+      "start": "/api/running/python-vm/_operations/start"
+    }
+  },
+  "tailf-ncs:services": {
+    "global-settings": {
+      "collect-forward-diff": true
+    },
+    "ipsec:ipsec": [
+      {
+        "name": "sample_service1"
+      },
+      {
+        "name": "testit"
+      }
+    ],
+    "operations": {
+      "check-sync": "/api/running/services/_operations/check-sync",
+      "commit-dry-run": "/api/running/services/_operations/commit-dry-run"
+    }
+  },
+  "tailf-ncs:snmp-notification-receiver": {
+    "engine-id": "80:00:61:81:80:00:50:56:84:38:26:00:0b:a6:0e"
+  },
+  "tailf-ncs:compliance": {},
+  "tailf-ncs:software": {
+    "packages": {
+      "operations": {
+        "list": "/api/running/software/packages/_operations/list",
+        "upload": "/api/running/software/packages/_operations/upload",
+        "fetch": "/api/running/software/packages/_operations/fetch",
+        "install": "/api/running/software/packages/_operations/install",
+        "deinstall": "/api/running/software/packages/_operations/deinstall"
+      }
+    }
+  },
+  "tailf-ncs-alarms:alarms": {
+    "alarm-model": {
+      "alarm-type": [
+        {
+          "type": "al:connection-failure",
+          "specific-problem-match": "*"
+        },
+        {
+          "type": "al:revision-error",
+          "specific-problem-match": "*"
+        },
+        {
+          "type": "al:out-of-sync",
+          "specific-problem-match": "*"
+        },
+        {
+          "type": "al:dev-manager-internal-error",
+          "specific-problem-match": "*"
+        },
+        {
+          "type": "al:ned-live-tree-connection-failure",
+          "specific-problem-match": "*"
+        },
+        {
+          "type": "al:configuration-error",
+          "specific-problem-match": "*"
+        },
+        {
+          "type": "al:bad-user-input",
+          "specific-problem-match": "*"
+        },
+        {
+          "type": "al:commit-through-queue-failed",
+          "specific-problem-match": "*"
+        },
+        {
+          "type": "al:commit-through-queue-blocked",
+          "specific-problem-match": "*"
+        }
+      ]
+    },
+    "operations": {
+      "synchronize-alarms": "/api/running/alarms/_operations/synchronize-alarms",
+      "compress-alarms": "/api/running/alarms/_operations/compress-alarms",
+      "filter-alarms": "/api/running/alarms/_operations/filter-alarms",
+      "purge-alarms": "/api/running/alarms/_operations/purge-alarms"
+    }
+  },
+  "tailf-webui:webui": {
+    "schematics": {}
+  },
+  "operations": {
+    "lock": "/api/running/_lock",
+    "rollback": "/api/running/_rollback"
+  }
+}
