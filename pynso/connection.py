@@ -44,6 +44,6 @@ class NSOConnection(object):
 
     def _get_headers(self, media_type):
         return {
-            'Content-Type': '%s+%s' % (media_type,
+            'Accept': '%s+%s' % (media_type,
                                        NSOConnection.response_type)
         }
