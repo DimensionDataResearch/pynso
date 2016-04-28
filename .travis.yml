@@ -9,8 +9,6 @@ python:
   - "nightly" # currently points to 3.6-dev
 install: 
   - pip install -r requirements.txt
-  - pip install nose coverage codecov
-# command to run tests
-script:  
-  - python setup.py nosetests --with-coverage
-after-success: codecov
+  - pip install tox
+script:
+    - tox
