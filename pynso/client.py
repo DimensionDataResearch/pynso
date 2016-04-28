@@ -68,9 +68,9 @@ class NSOClient(object):
                                    path=data_path,
                                    params=params)
 
-    def set_data_value(self, datastore, data_path, data):
+    def set_data_value(self, datastore, data_path, data, params=None):
         """
-        Get a data entry in a datastore
+        Update (POST) a data entry in a datastore
 
         :param datastore: The target datastore
         :type  datastore: :class:`DatastoreType`
@@ -88,7 +88,51 @@ class NSOClient(object):
         return self.connection.post(resource_type=datastore,
                                     media_type=MediaType.DATA,
                                     path=data_path,
-                                    data=data)
+                                    data=data,
+                                    params=params)
+
+    def create_data_value(self, datastore, data_path, data, params=None):
+        """
+        Create (PUT) a data entry in a datastore
+
+        :param datastore: The target datastore
+        :type  datastore: :class:`DatastoreType`
+
+        :param data_path: The list of paths
+        :type  data_path: ``list`` of ``str`` or ``tuple``
+
+        :param data: The new value at the given path
+        :type  data: ``dict``
+
+        :rtype: ``bool``
+        :return: ``True`` if successful, otherwise error.
+        """
+        data_path = '/'.join(data_path)
+        return self.connection.put(resource_type=datastore,
+                                   media_type=MediaType.DATA,
+                                   path=data_path,
+                                   data=data,
+                                   params=params)
+
+    def delete_path(self, datastore, data_path, params=None):
+        """
+        Delete a data entry in a datastore
+
+        :param datastore: The target datastore
+        :type  datastore: :class:`DatastoreType`
+
+        :param data_path: The list of paths
+        :type  data_path: ``list`` of ``str`` or ``tuple``
+
+        :rtype: ``bool``
+        :return: ``True`` if successful, otherwise error.
+        """
+        data_path = '/'.join(data_path)
+        return self.connection.delete(
+            resource_type=datastore,
+            media_type=MediaType.DATA,
+            path=data_path,
+            params=params)
 
     def get_rollbacks(self):
         """
