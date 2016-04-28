@@ -1,7 +1,7 @@
 PyNSO
 =====
 
-|Build| |PyPI| |PyPI| |PyPI| |Documentation Status| |Coverage|
+|Build| |PyPI-1| |PyPI-2| |PyPI-3| |Documentation Status| |Coverage|
 
 Overview
 --------
@@ -47,11 +47,11 @@ Usage
 
 .. |Build| image:: https://travis-ci.org/DimensionDataCBUSydney/pynso.svg?branch=master
    :target: https://travis-ci.org/DimensionDataCBUSydney/pynso
-.. |PyPI| image:: https://img.shields.io/pypi/v/pynso.svg?maxAge=2592000
+.. |PyPI-1| image:: https://img.shields.io/pypi/v/pynso.svg?maxAge=2592000
    :target: 
-.. |PyPI| image:: https://img.shields.io/pypi/l/pynso.svg?maxAge=2592000
+.. |PyPI-2| image:: https://img.shields.io/pypi/l/pynso.svg?maxAge=2592000
    :target: 
-.. |PyPI| image:: https://img.shields.io/pypi/pyversions/pynso.svg?maxAge=2592000
+.. |PyPI-3| image:: https://img.shields.io/pypi/pyversions/pynso.svg?maxAge=2592000
    :target: 
 .. |Documentation Status| image:: https://readthedocs.org/projects/pynso/badge/?version=latest
    :target: http://pynso.readthedocs.io/en/latest/?badge=latest
