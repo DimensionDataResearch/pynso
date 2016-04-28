@@ -88,7 +88,7 @@ class NSOClient(object):
         return self.connection.post(resource_type=datastore,
                                     media_type=MediaType.DATA,
                                     path=data_path,
-                                    data=value)
+                                    data=data)
 
     def get_rollbacks(self):
         """
