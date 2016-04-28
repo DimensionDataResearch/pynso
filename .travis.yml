@@ -14,4 +14,5 @@ install:
 # command to run tests
 script:  
   - python setup.py nosetests --with-coverage
-after-success: codecov
+after_success:
+  - coveralls
