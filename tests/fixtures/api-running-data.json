@@ -1,0 +1,20 @@
+{
+  "snmp:agent": {
+    "enabled": true,
+    "ip": "0.0.0.0",
+    "udp-port": 4000,
+    "version": {
+      "v1": [
+        null
+      ],
+      "v2c": [
+        null
+      ],
+      "v3": [
+        null
+      ]
+    },
+    "engine-id": {},
+    "max-message-size": 50000
+  }
+}
