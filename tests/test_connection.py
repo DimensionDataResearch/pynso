@@ -101,12 +101,12 @@ class TestConnection(unittest.TestCase):
     def test_put(self):
         test = {'a': 'b'}
         self.adapter.register_uri('PUT', '/api/api', json=test, status_code=200)
-        response = self.connection.put(ResourceType.API, MediaType.API, data={'test':'data'})
+        response = self.connection.put(ResourceType.API, MediaType.API, data={'test': 'data'})
         self.assertTrue(test == response)
 
     def test_put_no_response(self):
         self.adapter.register_uri('PUT', '/api/api', status_code=204)
-        response = self.connection.put(ResourceType.API, MediaType.API, data={'test':'data'})
+        response = self.connection.put(ResourceType.API, MediaType.API, data={'test': 'data'})
         self.assertTrue(response)
 
     def test_put_error(self):
@@ -117,18 +117,34 @@ class TestConnection(unittest.TestCase):
     def test_delete(self):
         test = {'a': 'b'}
         self.adapter.register_uri('DELETE', '/api/api', json=test, status_code=200)
-        response = self.connection.delete(ResourceType.API, MediaType.API, data={'test':'data'})
+        response = self.connection.delete(ResourceType.API, MediaType.API, data={'test': 'data'})
         self.assertTrue(test == response)
 
     def test_delete_no_response(self):
         self.adapter.register_uri('DELETE', '/api/api', status_code=204)
-        response = self.connection.delete(ResourceType.API, MediaType.API, data={'test':'data'})
+        response = self.connection.delete(ResourceType.API, MediaType.API, data={'test': 'data'})
         self.assertTrue(response)
 
     def test_delete_error(self):
         self.adapter.register_uri('DELETE', '/api/api', json=self.test_error, status_code=404)
         with self.assertRaises(requests.HTTPError):
             self.connection.delete(ResourceType.API, MediaType.API, data={'test': 'data'})
+
+    def test_post(self):
+        test = {'a': 'b'}
+        self.adapter.register_uri('POST', '/api/api', json=test, status_code=200)
+        response = self.connection.post(ResourceType.API, MediaType.API, data={'test': 'data'})
+        self.assertTrue(test == response)
+
+    def test_post_no_response(self):
+        self.adapter.register_uri('POST', '/api/api', status_code=204)
+        response = self.connection.post(ResourceType.API, MediaType.API, data={'test': 'data'})
+        self.assertTrue(response)
+
+    def test_post_error(self):
+        self.adapter.register_uri('POST', '/api/api', json=self.test_error, status_code=404)
+        with self.assertRaises(requests.HTTPError):
+            self.connection.post(ResourceType.API, MediaType.API, data={'test': 'data'})
 
 if __name__ == '__main__':
     import sys
