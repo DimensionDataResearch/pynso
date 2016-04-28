@@ -40,6 +40,10 @@ class TestClient(unittest.TestCase):
         rollback = self.client.get_rollback('86')
         self.assertEqual(len(rollback), 45)
 
+    def test_apply_rollback(self):
+        rollback = self.client.apply_rollback(DatastoreType.RUNNING, '86')
+        self.assertEqual(len(rollback), 0)
+
 
 class MockConnection(object):
     def __init__(self, host, username, password, ssl):
@@ -49,7 +53,8 @@ class MockConnection(object):
         'None-application/vnd.yang.api-None': 'api-info.json',
         'running-application/vnd.yang.datastore-None': 'api-running-datastore.json',
         'rollbacks-application/vnd.yang.api-None': 'api-rollbacks.json',
-        'rollbacks-application/vnd.yang.api-86': 'api-rollbacks-86.txt'
+        'rollbacks-application/vnd.yang.api-86': 'api-rollbacks-86.txt',
+        'running-application/vnd.yang.data-rollback': 'api-rollback-apply.json'
     }
 
     def _path_to(self, file):
@@ -73,6 +78,15 @@ class MockConnection(object):
         with open(self._path_to(MockConnection.path_to_fixture_mapping[key])) as file_:
             data = file_.readlines()
         return data
+
+    def post(self, resource_type, media_type, data,
+             path=None, params=None):
+        key = '%s-%s-%s' % (resource_type,
+                            media_type,
+                            path)
+        with open(self._path_to(MockConnection.path_to_fixture_mapping[key])) as json_file:
+            json_data = json.load(json_file)
+        return json_data
 
 if __name__ == '__main__':
     import sys

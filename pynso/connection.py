@@ -78,6 +78,23 @@ class NSOConnection(object):
             logger.error('Failed on request %s', url)
             logger.error(_format_error_message(response))
 
+    def post(self, resource_type, media_type, data,
+             path=None, params=None):
+        url = _format_url(self.host, resource_type, path, self.ssl)
+        response = self.session.post(
+            url,
+            headers=self._get_headers(media_type),
+            data=data,
+            params=params)
+        try:
+            response.raise_for_status()
+            if response.status_code == 204:
+                return True
+            return response.json()
+        except requests.HTTPError:
+            logger.error('Failed on request %s', url)
+            logger.error(_format_error_message(response))
+
     def _get_headers(self, media_type):
         return {
             'Accept': '%s+%s' % (media_type,
