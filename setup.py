@@ -37,5 +37,6 @@ setup(
     author='Anthony Shaw',
     install_requires=install_requires,
     dependency_links=dependency_links,
-    author_email='anthony.shaw@dimensiondata.com'
+    author_email='anthony.shaw@dimensiondata.com',
+    test_suite="tests",
 )
