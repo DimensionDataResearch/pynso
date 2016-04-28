@@ -13,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import logging
-
 import requests
 
 logger = logging.getLogger()
@@ -63,7 +62,9 @@ class NSOConnection(object):
             return response.json()
         except requests.HTTPError:
             logger.error('Failed on request %s', url)
-            logger.error(_format_error_message(response))
+            message = _format_error_message(response)
+            logger.error(message)
+            raise
 
     def get_plain(self, resource_type, media_type, path=None, params=None):
         url = _format_url(self.host, resource_type, path, self.ssl)
@@ -73,10 +74,11 @@ class NSOConnection(object):
             params=params)
         try:
             response.raise_for_status()
-            return response.text()
+            return response.text
         except requests.HTTPError:
             logger.error('Failed on request %s', url)
             logger.error(_format_error_message(response))
+            raise
 
     def post(self, resource_type, media_type, data,
              path=None, params=None):
@@ -94,6 +96,7 @@ class NSOConnection(object):
         except requests.HTTPError:
             logger.error('Failed on request %s', url)
             logger.error(_format_error_message(response))
+            raise
 
     def put(self, resource_type, media_type, data,
             path=None, params=None):
@@ -111,6 +114,7 @@ class NSOConnection(object):
         except requests.HTTPError:
             logger.error('Failed on request %s', url)
             logger.error(_format_error_message(response))
+            raise
 
     def delete(self, resource_type, media_type, data,
                path=None, params=None):
@@ -128,6 +132,7 @@ class NSOConnection(object):
         except requests.HTTPError:
             logger.error('Failed on request %s', url)
             logger.error(_format_error_message(response))
+            raise
 
     def _get_headers(self, media_type):
         return {
