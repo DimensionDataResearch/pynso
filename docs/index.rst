@@ -21,6 +21,12 @@ They communicate over the native protocol supported by the device,
 such as Network Configuration Protocol (NETCONF), Representational State Transfer (REST),
 Extensible Markup Language (XML), CLI, and Simple Network Management Protocol (SNMP).
 
+Authors
+-------
+
+This Python module was developed by the Research and Development team at `Dimension Data`_. This module is
+provided under the `Apache 2.0 license`_ and the source code is available at `github.com`_.
+
 Installation (stable version)
 -----------------------------
 
@@ -87,6 +93,7 @@ Main
     :glob:
     :maxdepth: 3
 
+    index
     setup
     api
 
@@ -97,3 +104,6 @@ Main
     documentation are licensed under the `Apache 2.0 license`_.
 
 .. _`Apache 2.0 license`: https://www.apache.org/licenses/LICENSE-2.0.html
+
+.. _`Dimension Data`: http://www.dimensiondata.com/
+.. _`github.com`: https://github.com/DimensionDataCBUSydney/pynso
