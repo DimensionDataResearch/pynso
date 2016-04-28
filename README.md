@@ -5,6 +5,8 @@
 [![PyPI](https://img.shields.io/pypi/v/pynso.svg?maxAge=2592000)]()
 [![PyPI](https://img.shields.io/pypi/l/pynso.svg?maxAge=2592000)]()
 [![PyPI](https://img.shields.io/pypi/pyversions/pynso.svg?maxAge=2592000)]()
+[![Documentation Status](https://readthedocs.org/projects/pynso/badge/?version=latest)](http://pynso.readthedocs.io/en/latest/?badge=latest)
+
 
 Overview
 --------

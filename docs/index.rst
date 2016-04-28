@@ -93,7 +93,6 @@ Main
     :glob:
     :maxdepth: 3
 
-    index
     setup
     api
 
