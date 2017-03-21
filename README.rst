@@ -21,7 +21,7 @@ Or clone the repo:
 
 ::
 
-    $ git clone https://github.com/DimensionDataCBUSydney/pynso.git
+    $ git clone https://github.com/DimensionDataResearch/pynso.git
     $ python setup.py install
 
 Usage
@@ -45,8 +45,8 @@ Usage
     print('Getting the contents of the running datastore')
     pprint(client.get_datastore(DatastoreType.RUNNING))
 
-.. |Build| image:: https://travis-ci.org/DimensionDataCBUSydney/pynso.svg?branch=master
-   :target: https://travis-ci.org/DimensionDataCBUSydney/pynso
+.. |Build| image:: https://travis-ci.org/DimensionDataResearch/pynso.svg?branch=master
+   :target: https://travis-ci.org/DimensionDataResearch/pynso
 .. |PyPI1| image:: https://img.shields.io/pypi/v/pynso.svg?maxAge=2592000
    :target: https://pypi.python.org/pypi/pynso
 .. |PyPI2| image:: https://img.shields.io/pypi/l/pynso.svg?maxAge=2592000
@@ -55,5 +55,5 @@ Usage
    :target: https://pypi.python.org/pypi/pynso
 .. |Documentation Status| image:: https://readthedocs.org/projects/pynso/badge/?version=latest
    :target: http://pynso.readthedocs.io/en/latest/?badge=latest
-.. |Coverage| image:: https://coveralls.io/repos/github/DimensionDataCBUSydney/pynso/badge.svg?branch=master
-   :target: https://coveralls.io/github/DimensionDataCBUSydney/pynso?branch=master
+.. |Coverage| image:: https://coveralls.io/repos/github/DimensionDataResearch/pynso/badge.svg?branch=master
+   :target: https://coveralls.io/github/DimensionDataResearch/pynso?branch=master
