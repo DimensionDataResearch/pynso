@@ -26,11 +26,12 @@ class NSOClient(object):
     connectionCls = NSOConnection
 
     def __init__(self, host, username, password,
-                 port=8080, ssl=False):
+                 port=8080, ssl=False, verify=True):
         self.connection = self.connectionCls('%s:%s' % (host, port),
                                              username,
                                              password,
-                                             ssl)
+                                             ssl,
+                                             verify)
 
     def info(self):
         """
