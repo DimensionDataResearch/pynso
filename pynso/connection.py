@@ -45,18 +45,18 @@ def _format_error_message(response):
 class NSOConnection(object):
     response_type = 'json'
 
-    def __init__(self, host, username, password, ssl, verify):
+    def __init__(self, host, username, password, ssl, verify_ssl=True):
         self.host = host
         self.session = requests.Session()
         self.session.auth = (username, password)
         self.ssl = ssl
-        self.verify = verify
+        self.verify_ssl = verify_ssl
 
     def get(self, resource_type, media_type, path=None, params=None):
         url = _format_url(self.host, resource_type, path, self.ssl)
         response = self.session.get(
             url,
-            verify=self.verify,
+            verify=self.verify_ssl,
             headers=self._get_headers(media_type),
             params=params)
         try:
@@ -72,7 +72,7 @@ class NSOConnection(object):
         url = _format_url(self.host, resource_type, path, self.ssl)
         response = self.session.get(
             url,
-            verify=self.verify,
+            verify=self.verify_ssl,
             headers=self._get_headers(media_type),
             params=params)
         try:
@@ -88,7 +88,7 @@ class NSOConnection(object):
         url = _format_url(self.host, resource_type, path, self.ssl)
         response = self.session.post(
             url,
-            verify=self.verify,
+            verify=self.verify_ssl,
             headers=self._get_headers(media_type),
             data=data,
             params=params)
@@ -107,7 +107,7 @@ class NSOConnection(object):
         url = _format_url(self.host, resource_type, path, self.ssl)
         response = self.session.put(
             url,
-            verify=self.verify,
+            verify=self.verify_ssl,
             headers=self._get_headers(media_type),
             data=data,
             params=params)
@@ -126,7 +126,7 @@ class NSOConnection(object):
         url = _format_url(self.host, resource_type, path, self.ssl)
         response = self.session.delete(
             url,
-            verify=self.verify,
+            verify=self.verify_ssl,
             headers=self._get_headers(media_type),
             data=data,
             params=params)

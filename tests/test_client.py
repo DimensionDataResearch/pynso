@@ -65,7 +65,7 @@ class TestClient(unittest.TestCase):
 
 
 class MockConnection(object):
-    def __init__(self, host, username, password, ssl):
+    def __init__(self, host, username, password, ssl, verify_ssl):
         pass
 
     path_to_fixture_mapping = {
@@ -125,6 +125,7 @@ class MockConnection(object):
         with open(self._path_to(MockConnection.path_to_fixture_mapping[key])) as json_file:
             json_data = json.load(json_file)
         return json_data
+
 
 if __name__ == '__main__':
     import sys
