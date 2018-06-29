@@ -1,14 +1,27 @@
+# Config file for automatic testing at travis-ci.org
+
+sudo: false
 language: python
-python:
-  - "2.6"
-  - "2.7"
-  - "3.3"
-  - "3.4"
-  - "3.5"
-install: 
-  - pip install -r requirements.txt
-  - pip install tox
-  - TOX_ENV=py$TRAVIS_PYTHON_VERSION
+
+matrix:
+    include:
+      - python: 2.7
+      - python: 3.4
+      - python: 3.5
+      - python: 3.6
+      - python: pypy
+      - python: 3.6
+        env: TOX_ENV=flake8
+
+install:
+  - pip install tox-travis
 
 script:
-  - tox -e $TOX_ENV
+  - tox
+
+before_cache:
+  - rm -rf $HOME/.cache/pip/log
+
+cache:
+  directories:
+    - $HOME/.cache/pip
